@@ -23,13 +23,13 @@ public class DriverFactory {
                 break;
 
             case "firefox":
-                FirefoxOptions fireOption = new FirefoxOptions();
+                FirefoxOptions fireFoxOption = new FirefoxOptions();
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
 
             case "edge":
-                EdgeOptions edge = new EdgeOptions();
+                EdgeOptions edgeOption = new EdgeOptions();
                 WebDriverManager.edgedriver().setup();
                 driver = new EdgeDriver();
                 break;

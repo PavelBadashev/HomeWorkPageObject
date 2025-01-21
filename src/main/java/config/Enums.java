@@ -3,7 +3,7 @@ package config;
 import java.util.Properties;
 
 public class Enums {
-    private static Properties properties = new Properties();
+    private static final Properties properties = new Properties();
 
     public static String getUrl() {
         return properties.getProperty("url", "https://otus.home.kartushin.su/form.html");

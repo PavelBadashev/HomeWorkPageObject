@@ -23,7 +23,7 @@ public class MainTest {
     @ParameterizedTest
     @DisplayName("Проверка соответствия паролей")
     @ValueSource(strings = {"пароль", "password"})
-    void testPasswordValidation(String confirmPassword) throws InterruptedException {
+    void testPasswordValidation(String confirmPassword){
         MainPage fluentPage = new MainPage(driver);
         String password = "пароль";
         fluentPage.open();
