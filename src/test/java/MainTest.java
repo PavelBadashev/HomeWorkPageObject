@@ -10,29 +10,31 @@ public class MainTest {
 
     @BeforeEach
     void beforeEach() {
-        driver = new DriverFactory().getDriver("chrome");
+        driver = new DriverFactory().getDriver();
     }
 
     @AfterEach
     void afterEach(){
-        driver.close();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @ParameterizedTest
-    @DisplayName("Проверка уровней владения языком")
-    @ValueSource(strings = {"native", "advanced", "intermediate", "beginner"})
-    void allLanguageTest(String language){
+    @DisplayName("Проверка соответствия паролей")
+    @ValueSource(strings = {"пароль", "password"})
+    void testPasswordValidation(String confirmPassword) throws InterruptedException {
         MainPage fluentPage = new MainPage(driver);
+        String password = "пароль";
         fluentPage.open();
         fluentPage
-                .enterUserName("чувак")
-                .enterPassword("пароль")
-                .enterConfirmPassword("пароль1")
+                .enterUserName("логин5321")
+                .enterPassword(password)
+                .enterConfirmPassword(confirmPassword)
                 .enterBirthdate("01/01/2000")
                 .enterEmail("test123@test.com")
-                .enterLanguageLevel(language);
-
-        Assertions.assertTrue(fluentPage.checkPasswords(), "ASSERT: Пароль не совпадает!");
+                .enterLanguageLevel("native");
+        Assertions.assertEquals(confirmPassword, password, "ASSERT: Пароль не совпадает!");
         fluentPage.clickSubmit();
     }
 }

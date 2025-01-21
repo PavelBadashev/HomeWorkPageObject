@@ -1,5 +1,6 @@
 package driver;
 
+import config.Enums;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,8 +13,8 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 public class DriverFactory {
     public WebDriver driver;
 
-    public WebDriver getDriver(String browserType) {
-//        WebDriver driver;
+    public WebDriver getDriver() {
+        String browserType = Enums.getBrowser();
         switch (browserType.toLowerCase()) {
             case "chrome":
                 ChromeOptions chromeOptions = new ChromeOptions();
@@ -37,11 +38,5 @@ public class DriverFactory {
                 throw new IllegalArgumentException("Неподдеживаемый браузер " + browserType);
         }
         return driver;
-    }
-
-    public void closeDriver() {
-        if (driver != null) {
-            driver.quit();
-        }
     }
 }

@@ -2,11 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class MainPage extends AbsBasePage{
     private final By usernameLocation = By.id("username");
@@ -53,9 +49,5 @@ public class MainPage extends AbsBasePage{
     public MainPage clickSubmit() {
         driver.findElement(By.cssSelector("input[type=submit]")).click();
         return this;
-    }
-
-    public boolean checkPasswords() {
-        return driver.findElement(confirm_passwordLocation) == driver.findElement(passwordLocation);
     }
 }
